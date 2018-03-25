@@ -1,18 +1,33 @@
+{% load staticfiles %}
 <html>
     <head>
-    	<title>Django Girls Blog</title>
+      <title>Melissa's thoughts</title>
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700,800" rel="stylesheet">
+      <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
-    	<div>
-    		<h1><a href="/">Django Girls Blog</a></h1>
-    	</div>
-    {% for post in posts %}
-        <div>
-            <p>published: {{ post.published_date }}</p>
-            <h1><a href="">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
+      <div class="page-header">
+        <img src="{% static 'images/logo-melissa.png'%}" alt="Logo Melissa Martinez" style="width:140px;">
+        <h1><a href="/">Melissa's thoughts</a></h1>
+      </div>
+      <div class="content container">
+        <div class="row">
+          <div class="col-md-8">
+            {% for post in posts %}
+              <div class="post">
+                <div class="posts-title">
+                </div>
+                <h1><a href="">{{ post.title }}</a></h1>
+                <div class="date">
+                  <p>Published: {{ post.published_date }}</p>
+                </div>
+                <p>{{ post.text|linebreaksbr }}</p>
+              </div>
+            {% endfor %}
+          </div>
         </div>
-    {% endfor %}
-    
+      </div>
     </body>
 </html>
